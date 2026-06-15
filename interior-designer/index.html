@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#1a1410" />
+  <title>Opaline — Interior Atelier · A home, told chapter by chapter</title>
+  <meta name="description" content="Opaline is an interior atelier crafting spaces that unfold like chapters — light, material and memory composed into a single living narrative." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/style.css" />
+
+  <!-- three.js as ES module -->
+  <script type="importmap">
+  { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js" } }
+  </script>
+  <!-- GSAP + ScrollTrigger + Lenis (UMD globals) -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+</head>
+<body>
+
+  <!-- ===== Loader ===== -->
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader__brand">OPALINE</div>
+    <div class="loader__line"><span id="loaderFill"></span></div>
+    <div class="loader__meta"><span>Interior Atelier</span><span id="loaderPct">00</span></div>
+  </div>
+
+  <!-- ===== Painted texture background (three.js) ===== -->
+  <canvas id="paint" aria-hidden="true"></canvas>
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- ===== Custom cursor ===== -->
+  <div class="cursor" id="cursor" aria-hidden="true"><span class="cursor__dot"></span></div>
+
+  <!-- ===== Chapter rail ===== -->
+  <aside class="rail" id="rail" aria-hidden="true">
+    <span class="rail__label">CHAPTER</span>
+    <span class="rail__num" id="railNum">00</span>
+    <span class="rail__title" id="railTitle">Overture</span>
+    <span class="rail__track"><span id="railFill"></span></span>
+  </aside>
+
+  <!-- ===== Nav ===== -->
+  <nav class="nav" id="nav">
+    <a class="nav__brand" href="#top" data-magnetic>OPALINE<span>®</span></a>
+    <div class="nav__links">
+      <a href="#story" data-link>Story</a>
+      <a href="#work" data-link>Work</a>
+      <a href="#atelier" data-link>Atelier</a>
+      <a href="#contact" class="nav__cta" data-magnetic>Begin a chapter</a>
+    </div>
+    <button class="nav__burger" id="burger" aria-label="Menu"><span></span><span></span></button>
+  </nav>
+
+  <main id="top">
+
+    <!-- ===== Chapter 00 — Overture / Hero ===== -->
+    <section class="chapter hero" id="story"
+             data-chapter="00" data-name="Overture"
+             data-a="#1a1410" data-b="#4a3424" data-c="#b9885f">
+      <div class="wrap hero__wrap">
+        <p class="eyebrow line"><span>Interior Atelier — Est. 2014 — Lisbon · Milano</span></p>
+        <h1 class="hero__title">
+          <span class="lh"><span>Every home</span></span>
+          <span class="lh"><span>has a <em>story</em></span></span>
+          <span class="lh"><span>waiting to be told.</span></span>
+        </h1>
+        <div class="hero__foot">
+          <p class="hero__lede line"><span>We compose interiors that unfold like chapters — light, material and memory, arranged into a single living narrative.</span></p>
+          <a href="#chapter1" class="scrollcue" data-magnetic>
+            <span class="scrollcue__txt">Begin reading</span>
+            <span class="scrollcue__line"></span>
+          </a>
+        </div>
+      </div>
+      <div class="hero__corner tl">N 38.72°</div>
+      <div class="hero__corner tr">W 9.13°</div>
+    </section>
+
+    <!-- ===== Chapter 01 — The Light ===== -->
+    <section class="chapter" id="chapter1"
+             data-chapter="01" data-name="The Light"
+             data-a="#2a1c0e" data-b="#b9763a" data-c="#e0a868">
+      <div class="wrap split">
+        <div class="split__text">
+          <span class="kicker reveal">01 — The Light</span>
+          <h2 class="h-display"><span class="word-wrap">We <em>begin</em> with light.</span></h2>
+          <p class="body reveal">Before a single object is placed, we study how the sun travels a room — where it pools in the morning, where it lengthens at dusk. Light is the first material, and the most honest one. Everything else is written around it.</p>
+          <ul class="meta-list reveal">
+            <li><span>01</span> Solar mapping</li>
+            <li><span>02</span> Layered ambient design</li>
+            <li><span>03</span> Circadian warmth</li>
+          </ul>
+        </div>
+        <figure class="split__media reveal-media">
+          <img loading="lazy" alt="Sunlit minimalist living room" src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1100&q=80" />
+          <figcaption>Casa Lumière — morning study</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ===== Chapter 02 — The Material ===== -->
+    <section class="chapter" id="chapter2"
+             data-chapter="02" data-name="The Material"
+             data-a="#2a140f" data-b="#b9533a" data-c="#d98b6a">
+      <div class="wrap split reverse">
+        <div class="split__text">
+          <span class="kicker reveal">02 — The Material</span>
+          <h2 class="h-display"><span class="word-wrap">Then, material <em>remembers</em>.</span></h2>
+          <p class="body reveal">Lime plaster that holds a fingerprint of light. Travertine cut to show its own weather. Oak that deepens with every season. We choose materials that age toward beauty rather than away from it — surfaces with a memory.</p>
+          <div class="swatches reveal">
+            <span class="sw" style="--sw:#c9b9a3"><b>Limewash</b></span>
+            <span class="sw" style="--sw:#b08968"><b>Travertine</b></span>
+            <span class="sw" style="--sw:#6b4f3a"><b>Smoked Oak</b></span>
+            <span class="sw" style="--sw:#3a3a38"><b>Patinated Brass</b></span>
+          </div>
+        </div>
+        <figure class="split__media reveal-media">
+          <img loading="lazy" alt="Material texture detail, plaster and stone" src="https://images.unsplash.com/photo-1615875605825-5eb9bb5d52ac?auto=format&fit=crop&w=1100&q=80" />
+          <figcaption>Atelier sample wall</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ===== Chapter 03 — The Living Space (pinned cinematic) ===== -->
+    <section class="chapter pinwrap" id="work"
+             data-chapter="03" data-name="The Living Space"
+             data-a="#0f1a13" data-b="#3a6e4a" data-c="#8fb98f">
+      <div class="pin" id="pin3">
+        <div class="pin__media">
+          <img loading="lazy" alt="Cinematic luxury living space" src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=1600&q=80" id="pinImg" />
+          <div class="pin__scrim"></div>
+        </div>
+        <div class="pin__content wrap">
+          <span class="kicker">03 — The Living Space</span>
+          <h2 class="pin__title">
+            <span class="lh"><span>A house</span></span>
+            <span class="lh"><span>that <em>breathes</em>.</span></span>
+          </h2>
+          <div class="pin__cap" id="pinCap">
+            <p class="body">Casa Lumière is a 320m² rebuild perched above the Tagus. We pulled the plan open to a single light-filled volume, then let raw lime, oak and linen do the talking.</p>
+          </div>
+          <div class="pin__stats">
+            <div><b>320</b><span>m² rebuild</span></div>
+            <div><b>14</b><span>months</span></div>
+            <div><b>1</b><span>uninterrupted view</span></div>
+          </div>
+        </div>
+        <span class="pin__index"><i id="pinIndex">01</i> / 03</span>
+      </div>
+    </section>
+
+    <!-- ===== Chapter 04 — The Collection (gallery) ===== -->
+    <section class="chapter collection"
+             data-chapter="04" data-name="The Collection"
+             data-a="#0a1820" data-b="#1f6e82" data-c="#6abccf">
+      <div class="wrap">
+        <header class="collection__head">
+          <span class="kicker reveal">04 — The Collection</span>
+          <h2 class="h-display"><span class="word-wrap">Chapters we've <em>written</em>.</span></h2>
+          <p class="body reveal">A selection of recent residences — each a complete story of premium, considered living.</p>
+        </header>
+        <div class="grid">
+          <article class="card reveal-media" data-tilt>
+            <div class="card__img"><img loading="lazy" alt="Luxury bedroom" src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=900&q=80" /></div>
+            <div class="card__meta"><h3>Maison Verde</h3><span>Comporta · 2024</span></div>
+          </article>
+          <article class="card reveal-media wide" data-tilt>
+            <div class="card__img"><img loading="lazy" alt="Luxury kitchen and dining" src="https://images.unsplash.com/photo-1556909212-d5b604d0c90d?auto=format&fit=crop&w=1400&q=80" /></div>
+            <div class="card__meta"><h3>The Glass Ledge</h3><span>Milano · 2024</span></div>
+          </article>
+          <article class="card reveal-media wide" data-tilt>
+            <div class="card__img"><img loading="lazy" alt="Luxury living lounge" src="https://images.unsplash.com/photo-1600210492493-0946911123ea?auto=format&fit=crop&w=1400&q=80" /></div>
+            <div class="card__meta"><h3>Casa Lumière</h3><span>Lisbon · 2023</span></div>
+          </article>
+          <article class="card reveal-media" data-tilt>
+            <div class="card__img"><img loading="lazy" alt="Luxury bathroom" src="https://images.unsplash.com/photo-1620626011761-996317b8d101?auto=format&fit=crop&w=900&q=80" /></div>
+            <div class="card__meta"><h3>Bain de Lune</h3><span>Paris · 2023</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Chapter 05 — The Atelier (process) ===== -->
+    <section class="chapter" id="atelier"
+             data-chapter="05" data-name="The Atelier"
+             data-a="#190f1f" data-b="#6e3a82" data-c="#b98fcf">
+      <div class="wrap">
+        <header class="collection__head">
+          <span class="kicker reveal">05 — The Atelier</span>
+          <h2 class="h-display"><span class="word-wrap">How a story <em>is made</em>.</span></h2>
+        </header>
+        <ol class="process">
+          <li class="reveal"><span class="process__n">01</span><h3>Listen</h3><p>We start with how you want to <em>feel</em> at home — not a moodboard, a memory.</p></li>
+          <li class="reveal"><span class="process__n">02</span><h3>Compose</h3><p>Plans, light studies and full material narratives, rendered until it's real.</p></li>
+          <li class="reveal"><span class="process__n">03</span><h3>Craft</h3><p>We commission makers directly — bespoke joinery, stone, metal and linen.</p></li>
+          <li class="reveal"><span class="process__n">04</span><h3>Reveal</h3><p>We hand back a finished story, styled to the last book on the shelf.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ===== Chapter 06 — The Invitation (contact) ===== -->
+    <section class="chapter invite" id="contact"
+             data-chapter="06" data-name="The Invitation"
+             data-a="#0a0c14" data-b="#2a3a5a" data-c="#8f9fcf">
+      <div class="wrap invite__wrap">
+        <span class="kicker reveal">06 — The Invitation</span>
+        <h2 class="invite__title">
+          <span class="lh"><span>Begin your</span></span>
+          <span class="lh"><span><em>chapter.</em></span></span>
+        </h2>
+        <a href="mailto:atelier@opaline.studio" class="invite__mail" data-magnetic>atelier@opaline.studio</a>
+        <div class="invite__row reveal">
+          <div><span>Studios</span><p>Lisbon — Av. da Liberdade 12<br/>Milano — Via Tortona 27</p></div>
+          <div><span>Social</span><p><a href="#" data-link>Instagram</a><br/><a href="#" data-link>Pinterest</a></p></div>
+          <div><span>Press</span><p>AD · Elle Decor · Cereal<br/>Kinfolk · Architectural Review</p></div>
+        </div>
+        <footer class="foot">
+          <span>© 2026 Opaline Atelier</span>
+          <span>A home, told chapter by chapter.</span>
+          <a href="#top" data-link>Back to the beginning ↑</a>
+        </footer>
+      </div>
+    </section>
+
+  </main>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

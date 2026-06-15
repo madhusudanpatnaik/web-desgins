@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Lumina | Elevated living through transformative architecture." />
+    <title>Lumina | 3D Interactive WebGL</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Josefin+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <!-- 3D Interactive Canvas -->
+    <canvas id="webgl-canvas"></canvas>
+
+    <div id="app">
+      <!-- Minimal Navbar -->
+      <nav class="navbar" id="navbar">
+        <div class="nav-brand">LUMINA</div>
+        <div class="nav-links">
+          <a href="#philosophy">PHILOSOPHY</a>
+          <a href="#portfolio">PORTFOLIO</a>
+          <a href="#process">PROCESS</a>
+          <a href="#contact" class="btn-primary">INQUIRE</a>
+        </div>
+      </nav>
+
+      <!-- Minimalist Hero (The Problem/Desire) -->
+      <section class="hero">
+        <div class="container hero-layout">
+          <h1 class="hero-title gs-reveal">
+            <div class="text-line">ELEVATE</div>
+            <div class="text-line"><span class="text-teal">ORDINARY</span></div>
+            <div class="text-line">SPACES.</div>
+          </h1>
+          <div class="hero-meta gs-reveal">
+            <p class="hero-subtitle">You are not just buying a property. You are commissioning a transformation.</p>
+            <a href="#philosophy" class="btn-scroll">
+              <span class="btn-text">DISCOVER THE ETHOS</span>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Transformation Slider (Before-After) -->
+      <section class="transformation" id="transformation">
+        <div class="container">
+          <h2 class="section-title gs-reveal">THE <span class="text-teal">TRANSFORMATION</span></h2>
+          
+          <div class="slider-container gs-reveal">
+            <div class="slider-image before-state">
+              <img src="https://images.unsplash.com/photo-1505843513577-22bb7d21e455?auto=format&fit=crop&w=1600&q=80" alt="Before: Standard space">
+              <span class="slider-label label-before">BEFORE</span>
+            </div>
+            
+            <div class="slider-image after-state" id="after-state">
+              <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=80" alt="After: Luxury space">
+              <span class="slider-label label-after">AFTER</span>
+            </div>
+            
+            <input type="range" min="0" max="100" value="50" class="slider" id="compare-slider" aria-label="Compare before and after">
+            <div class="slider-line" id="slider-line">
+              <div class="slider-button">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Philosophy (Kinetic Typography) -->
+      <section class="philosophy" id="philosophy">
+        <div class="container">
+          <h2 class="philosophy-text gs-reveal">
+            WE DO NOT BUILD HOUSES. <br>
+            WE ENGINEER <span class="text-teal">LIFESTYLES</span> <br>
+            FOR THE <span class="text-teal">UNCOMPROMISING</span>.
+          </h2>
+          <div class="philosophy-sub gs-reveal">
+            <p>Our architectural philosophy strips away the mundane. We believe in absolute minimalism, where every line serves a purpose and every material tells a story of unmatched luxury.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Portfolio (Horizontal Scroll) -->
+      <section class="portfolio-wrapper" id="portfolio">
+        <div class="container">
+          <h2 class="section-title gs-reveal">OUR <span class="text-teal">PORTFOLIO</span></h2>
+        </div>
+        <div class="horizontal-scroll-container">
+          <div class="horizontal-scroll-track" id="horizontal-track">
+            
+            <div class="portfolio-card">
+              <div class="card-image">
+                <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=800&q=80" alt="Villa Nova">
+              </div>
+              <div class="card-content">
+                <h3>VILLA NOVA</h3>
+                <p>Monaco, French Riviera</p>
+              </div>
+            </div>
+
+            <div class="portfolio-card">
+              <div class="card-image">
+                <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=800&q=80" alt="The Obsidian">
+              </div>
+              <div class="card-content">
+                <h3>THE OBSIDIAN</h3>
+                <p>Bel Air, Los Angeles</p>
+              </div>
+            </div>
+
+            <div class="portfolio-card">
+              <div class="card-image">
+                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt="Azure Penthouse">
+              </div>
+              <div class="card-content">
+                <h3>AZURE PENTHOUSE</h3>
+                <p>Dubai Marina, UAE</p>
+              </div>
+            </div>
+
+            <div class="portfolio-card">
+              <div class="card-image">
+                <img src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?auto=format&fit=crop&w=800&q=80" alt="Casa Blanco">
+              </div>
+              <div class="card-content">
+                <h3>CASA BLANCO</h3>
+                <p>Ibiza, Spain</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- How It Works (Massive Whitespace) -->
+      <section class="process" id="process">
+        <div class="container">
+          <h2 class="section-title gs-reveal">THE <span class="text-teal">PROCESS</span></h2>
+          <div class="process-grid">
+            <div class="process-text gs-reveal">
+              <span class="process-number">01</span>
+              <h3>ACQUIRE.</h3>
+              <p>We source under-utilized architectural canvases in prime global locations.</p>
+            </div>
+            <div class="process-text gs-reveal">
+              <span class="process-number">02</span>
+              <h3>REDEFINE.</h3>
+              <p>Our master architects strip away the mundane to reveal structural brilliance.</p>
+            </div>
+            <div class="process-text gs-reveal">
+              <span class="process-number">03</span>
+              <h3>DELIVER.</h3>
+              <p>You receive a turnkey masterpiece that appreciates both visually and financially.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Testimonials -->
+      <section class="testimonials" id="testimonials">
+        <div class="container">
+          <div class="testimonial-grid">
+            <div class="testimonial-card gs-reveal">
+              <svg class="quote-icon" width="40" height="40" viewBox="0 0 24 24" fill="currentColor"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+              <p class="quote-text">"Lumina doesn't just renovate homes; they sculpt masterpieces out of concrete and glass. My Monaco villa is unrecognizable in the best way possible."</p>
+              <p class="quote-author">— Alexander V., Global Investor</p>
+            </div>
+            <div class="testimonial-card gs-reveal">
+              <svg class="quote-icon" width="40" height="40" viewBox="0 0 24 24" fill="currentColor"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+              <p class="quote-text">"The highest standard of architectural integrity I have ever witnessed. They delivered a turnkey property that exceeded every impossible expectation."</p>
+              <p class="quote-author">— Sarah J., Tech Executive</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Results & CTA -->
+      <section class="results" id="results">
+        <div class="container results-layout">
+          <div class="results-stats gs-reveal">
+            <div class="stat-block">
+              <span class="stat-number" data-target="45">0</span><span class="stat-number">%</span>
+              <span class="stat-label">AVERAGE VALUE INCREASE</span>
+            </div>
+            <div class="stat-block">
+              <span class="stat-number" data-target="12">0</span>
+              <span class="stat-label">GLOBAL MASTERPIECES</span>
+            </div>
+          </div>
+          
+          <div class="cta-box gs-reveal" id="contact">
+            <h2>COMMISSION YOUR <br><span class="text-teal">MASTERPIECE</span></h2>
+            <p>Our portfolio is strictly by invitation and private inquiry.</p>
+            
+            <form class="clean-form" onsubmit="event.preventDefault(); alert('Inquiry received. We will be in touch.');">
+              <div class="form-row">
+                <input type="text" placeholder="Full Name" required aria-label="Full Name">
+              </div>
+              <div class="form-row">
+                <input type="email" placeholder="Email Address" required aria-label="Email Address">
+              </div>
+              <button type="submit" class="btn-solid">REQUEST INVITATION</button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- Expanded Minimal Footer -->
+      <footer class="footer">
+        <div class="container">
+          <div class="footer-grid">
+            <div class="footer-col">
+              <div class="footer-brand">LUMINA</div>
+              <p class="footer-tagline">Elevated living globally.</p>
+            </div>
+            <div class="footer-col">
+              <h4>OFFICES</h4>
+              <p>Los Angeles</p>
+              <p>Monaco</p>
+              <p>Dubai</p>
+            </div>
+            <div class="footer-col">
+              <h4>CONNECT</h4>
+              <a href="#">Instagram</a>
+              <a href="#">LinkedIn</a>
+              <a href="#">Private Newsletter</a>
+            </div>
+            <div class="footer-col">
+              <h4>LEGAL</h4>
+              <a href="#">Privacy Policy</a>
+              <a href="#">Terms of Service</a>
+              <a href="#">Cookie Policy</a>
+            </div>
+          </div>
+          <div class="footer-bottom">
+            <p>&copy; 2026 Lumina Real Estate. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

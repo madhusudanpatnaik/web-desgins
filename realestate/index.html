@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mohan Constructions — Building Tomorrow's Landmarks</title>
+  <meta name="description" content="Mohan Constructions — 37 years of crafting landmark residences and commercial spaces across India. RERA certified. Building horizons since 1987." />
+
+  <!-- Fonts: Space Grotesk (display) + JetBrains Mono (technical) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- ===== Loader ===== -->
+  <div class="loader" id="loader">
+    <div class="loader__inner">
+      <div class="loader__name">MOHAN CONSTRUCTIONS</div>
+      <div class="loader__bar"><span id="loaderBar"></span></div>
+      <div class="loader__pct" id="loaderPct">LOADING — 00%</div>
+    </div>
+  </div>
+
+  <!-- ===== Background Three.js shader + blueprint grid ===== -->
+  <canvas id="bg-canvas"></canvas>
+  <div class="blueprint"></div>
+
+  <!-- ===== Custom cursor ===== -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor__dot" id="cursorDot"></div>
+
+  <!-- ===== Nav ===== -->
+  <header class="nav" id="nav">
+    <a class="brand" href="#hero" data-hover>
+      <span class="brand__mark">M</span>
+      <span>MOHAN<br><small>CONSTRUCTIONS</small></span>
+    </a>
+    <nav class="nav__links">
+      <a href="#vision" data-hover>Vision</a>
+      <a href="#craft" data-hover>Craft</a>
+      <a href="#developments" data-hover>Projects</a>
+      <a href="#legacy" data-hover>Legacy</a>
+      <a href="#contact" data-hover>Contact</a>
+    </nav>
+    <button class="nav__cta" data-hover>Book a Visit</button>
+    <button class="nav__burger" aria-label="Menu"><span></span><span></span></button>
+  </header>
+
+  <main>
+
+    <!-- ============================================================
+         HERO — Chapter 00
+         ============================================================ -->
+    <section class="hero" id="hero">
+      <div class="wrap">
+        <div class="eyebrow hero__eyebrow" data-fade>EST. 1987 · MUMBAI · RERA — P51800000000</div>
+
+        <h1 class="hero__title">
+          <span class="line"><span class="line-in">We build</span></span>
+          <span class="line"><span class="line-in"><em>horizons</em>,</span></span>
+          <span class="line"><span class="line-in">not just homes.</span></span>
+        </h1>
+
+        <div class="hero__sub">
+          <p class="hero__lead" data-fade>
+            Landmark residences and commercial spaces engineered to outlast
+            the skyline they define. Three decades of concrete, craft and conviction.
+          </p>
+          <div class="hero__meta" data-fade>
+            <div><b>142</b> developments delivered</div>
+            <div><b>18,400+</b> families homed</div>
+            <div><b>12</b> cities · 1 standard</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- rAF-animated floating technical chips -->
+      <div class="floaties" id="floaties" aria-hidden="true">
+        <div class="chip chip--1" data-float><i></i> 19.0760° N <span>/ LAT</span></div>
+        <div class="chip chip--2" data-float><i></i> ISO 9001:2015 <span>/ CERTIFIED</span></div>
+        <div class="chip chip--3" data-float><i></i> G+47 FLOORS <span>/ MAX</span></div>
+        <div class="chip chip--4" data-float><i></i> SEISMIC ZONE III <span>/ RATED</span></div>
+        <div class="chip chip--5" data-float><i></i> 0.00% <span>/ COMPROMISE</span></div>
+      </div>
+
+      <div class="scrollcue" data-fade>SCROLL — CHAPTER 01</div>
+    </section>
+
+    <!-- ============================================================
+         VISION — Chapter 01
+         ============================================================ -->
+    <section class="chapter vision" id="vision">
+      <div class="wrap">
+        <div class="chapter__index" data-fade>CHAPTER <b>01</b> — THE VISION</div>
+        <h2 class="vision__statement" data-fade>
+          A building is a <em>promise</em> kept in <b>concrete</b> — to the family, the city and the decade after next.
+        </h2>
+
+        <div class="vision__grid">
+          <div class="vision__cell" data-stagger>
+            <h4>01 / Ground</h4>
+            <p>We survey the soil before we sell the dream. Every foundation is engineered for a hundred-year horizon.</p>
+          </div>
+          <div class="vision__cell" data-stagger>
+            <h4>02 / Form</h4>
+            <p>Light, air and flow are designed first. The architecture follows how a life is actually lived.</p>
+          </div>
+          <div class="vision__cell" data-stagger>
+            <h4>03 / Finish</h4>
+            <p>Imported stone, German fittings, joinery measured to the millimetre. The details you feel, never see.</p>
+          </div>
+          <div class="vision__cell" data-stagger>
+            <h4>04 / Forever</h4>
+            <p>Handover is the beginning. Dedicated facility teams keep the promise long after the keys change hands.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         CRAFT — Chapter 02 — 3D orbitable tower (sticky)
+         ============================================================ -->
+    <section class="craft" id="craft">
+      <div class="craft__stage">
+        <canvas id="tower-canvas"></canvas>
+
+        <div class="craft__copy">
+          <div class="eyebrow">CHAPTER 02 — THE CRAFT</div>
+          <h2>Every angle <b>considered.</b></h2>
+          <p>Scroll to rotate the tower through its full elevation — or drag to orbit it 360°. This is how we review every project: from all sides, before a single beam is poured.</p>
+        </div>
+
+        <div class="craft__readout" id="craftReadout">
+          <div>ELEVATION <b id="roElev">000</b>°</div>
+          <div>HEIGHT <b>184</b>m</div>
+          <div>FLOORS <b>G+47</b></div>
+          <div>GFA <b>92,400</b>m²</div>
+        </div>
+
+        <div class="craft__hint"><i></i> Drag to orbit · Scroll to rotate</div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         DEVELOPMENTS — Chapter 03 — projects
+         ============================================================ -->
+    <section class="chapter dev" id="developments">
+      <div class="wrap">
+        <div class="chapter__index" data-fade>CHAPTER <b>03</b> — THE DEVELOPMENTS</div>
+        <div class="dev__head">
+          <h2 data-fade>Signature<br>addresses.</h2>
+          <p data-fade>A selection of the landmarks bearing the Mohan name — each one a chapter in a city's story.</p>
+        </div>
+
+        <div class="projects">
+          <article class="project project--wide" data-tilt data-stagger>
+            <div class="project__img" style="background-image:url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1100&q=80')"></div>
+            <div class="project__scrim"></div>
+            <span class="project__status ongoing">Ongoing</span>
+            <div class="project__body">
+              <span class="project__tag">Residential · Ultra-luxury</span>
+              <h3>Mohan Aurelia</h3>
+              <div class="project__meta">
+                <span><b>Worli</b>, Mumbai</span>
+                <span>4 &amp; 5 BHK</span>
+                <span>G+47</span>
+                <span>Possession <b>2027</b></span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project project--tall" data-tilt data-stagger>
+            <div class="project__img" style="background-image:url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=900&q=80')"></div>
+            <div class="project__scrim"></div>
+            <span class="project__status done">Delivered</span>
+            <div class="project__body">
+              <span class="project__tag">Commercial · Grade-A</span>
+              <h3>Mohan Axis</h3>
+              <div class="project__meta">
+                <span><b>BKC</b>, Mumbai</span>
+                <span>Office Towers</span>
+                <span>1.2M sq.ft</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project project--half" data-tilt data-stagger>
+            <div class="project__img" style="background-image:url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=900&q=80')"></div>
+            <div class="project__scrim"></div>
+            <span class="project__status done">Delivered</span>
+            <div class="project__body">
+              <span class="project__tag">Residential · Township</span>
+              <h3>Mohan Greens</h3>
+              <div class="project__meta">
+                <span><b>Thane</b></span>
+                <span>2 &amp; 3 BHK</span>
+                <span>14 Towers</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project project--half" data-tilt data-stagger>
+            <div class="project__img" style="background-image:url('https://images.unsplash.com/photo-1494526585095-c41746248156?w=900&q=80')"></div>
+            <div class="project__scrim"></div>
+            <span class="project__status ongoing">Ongoing</span>
+            <div class="project__body">
+              <span class="project__tag">Mixed-use · Landmark</span>
+              <h3>Mohan Meridian</h3>
+              <div class="project__meta">
+                <span><b>Pune</b></span>
+                <span>Retail + Residences</span>
+                <span>Possession <b>2026</b></span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         LEGACY — Chapter 04 — stats
+         ============================================================ -->
+    <section class="chapter legacy" id="legacy">
+      <div class="wrap">
+        <div class="chapter__index" data-fade>CHAPTER <b>04</b> — THE LEGACY</div>
+        <div class="legacy__head">
+          <h2 data-fade>Numbers that <b>set</b> like concrete.</h2>
+        </div>
+        <div class="stats">
+          <div class="stat" data-stagger>
+            <div class="stat__num"><span class="num" data-count="37">0</span></div>
+            <div class="stat__label">Years of building</div>
+          </div>
+          <div class="stat" data-stagger>
+            <div class="stat__num"><span class="num" data-count="142">0</span></div>
+            <div class="stat__label">Projects delivered</div>
+          </div>
+          <div class="stat" data-stagger>
+            <div class="stat__num"><span class="num" data-count="18400">0</span><small>+</small></div>
+            <div class="stat__label">Families homed</div>
+          </div>
+          <div class="stat" data-stagger>
+            <div class="stat__num"><span class="num" data-count="22">0</span><small>M ft²</small></div>
+            <div class="stat__label">Built &amp; counting</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         PARTNERS — Chapter 05 — auto-fit logo grid
+         ============================================================ -->
+    <section class="chapter partners" id="partners">
+      <div class="wrap">
+        <div class="partners__head">
+          <div class="eyebrow" data-fade>CHAPTER 05 — BUILT WITH THE BEST</div>
+          <h2 data-fade>The names behind the name.</h2>
+        </div>
+        <div class="logos">
+          <div class="logo" data-stagger data-hover>L&amp;T<span>STRUCTURE</span></div>
+          <div class="logo" data-stagger data-hover>UltraTech<span>CEMENT</span></div>
+          <div class="logo" data-stagger data-hover>Saint-Gobain<span>GLASS</span></div>
+          <div class="logo" data-stagger data-hover>Schindler<span>MOBILITY</span></div>
+          <div class="logo" data-stagger data-hover>Jaquar<span>FITTINGS</span></div>
+          <div class="logo" data-stagger data-hover>Asian Paints<span>FINISH</span></div>
+          <div class="logo" data-stagger data-hover>Hettich<span>JOINERY</span></div>
+          <div class="logo" data-stagger data-hover>Siemens<span>SYSTEMS</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         CONTACT — Chapter 06
+         ============================================================ -->
+    <section class="chapter contact" id="contact">
+      <div class="wrap">
+        <div class="chapter__index" data-fade>CHAPTER <b>06</b> — THE BEGINNING</div>
+        <div class="contact__grid">
+          <div>
+            <h2 class="contact__big" data-fade>Let's build<br>your <em>chapter.</em></h2>
+            <p class="contact__lead" data-fade>
+              Schedule a private viewing of our experience centre in Lower Parel,
+              or speak directly with our residences team. No queues, no pressure —
+              just a conversation about where you'll live next.
+            </p>
+            <a class="contact__cta" href="#" data-hover>Book a private visit →</a>
+
+            <div class="hero__meta" style="text-align:left;margin-top:46px" data-fade>
+              <div><b>+91 22 6100 0000</b> · residences desk</div>
+              <div><b>live@mohanconstructions.in</b></div>
+              <div>Mohan House, Senapati Bapat Marg, <b>Lower Parel</b>, Mumbai 400013</div>
+            </div>
+          </div>
+
+          <form class="form" data-fade onsubmit="return false">
+            <div class="field">
+              <label for="f-name">Full name</label>
+              <input id="f-name" type="text" placeholder="Your name" data-hover />
+            </div>
+            <div class="field">
+              <label for="f-phone">Phone</label>
+              <input id="f-phone" type="tel" placeholder="+91" data-hover />
+            </div>
+            <div class="field">
+              <label for="f-project">Interested in</label>
+              <select id="f-project" data-hover>
+                <option>Mohan Aurelia — Worli</option>
+                <option>Mohan Meridian — Pune</option>
+                <option>Mohan Greens — Thane</option>
+                <option>Commercial — Mohan Axis</option>
+                <option>Not sure yet</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="f-msg">Message</label>
+              <textarea id="f-msg" rows="3" placeholder="Tell us what you're looking for" data-hover></textarea>
+            </div>
+            <button type="submit" data-hover>Request a callback</button>
+          </form>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+          <div class="footer__grid">
+            <div>
+              <div class="brand" style="margin-bottom:14px"><span class="brand__mark">M</span><span>MOHAN<br><small>CONSTRUCTIONS</small></span></div>
+              <div>Building tomorrow's landmarks<br>since <b>1987</b>.</div>
+            </div>
+            <div class="footer__cols">
+              <div class="footer__col">
+                <b>EXPLORE</b>
+                <a href="#vision" data-hover>Vision</a>
+                <a href="#developments" data-hover>Projects</a>
+                <a href="#legacy" data-hover>Legacy</a>
+              </div>
+              <div class="footer__col">
+                <b>COMPANY</b>
+                <a href="#" data-hover>About</a>
+                <a href="#" data-hover>Careers</a>
+                <a href="#" data-hover>Press</a>
+              </div>
+              <div class="footer__col">
+                <b>CONNECT</b>
+                <a href="#" data-hover>Instagram</a>
+                <a href="#" data-hover>LinkedIn</a>
+                <a href="#contact" data-hover>Contact</a>
+              </div>
+            </div>
+          </div>
+          <div class="footer__bottom">
+            <span>© 1987–2026 MOHAN CONSTRUCTIONS PVT. LTD.</span>
+            <span>RERA P51800000000 · CIN U45200MH1987PTC000000</span>
+            <span>MUMBAI · PUNE · THANE</span>
+          </div>
+        </footer>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== Library CDNs (globals) ===== -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+
+  <!-- Three.js as ES module via importmap -->
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+    }
+  }
+  </script>
+
+  <!-- ===== Application (inline module so it runs from file:// too) ===== -->
+  <script type="module">
+  import * as THREE from 'three';
+  import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+  const gsap = window.gsap;
+  const ScrollTrigger = window.ScrollTrigger;
+  gsap.registerPlugin(ScrollTrigger);
+
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const isTouch = window.matchMedia('(hover: none)').matches;
+  if (isTouch) document.body.classList.add('is-touch');
+
+  /* =========================================================
+     0. Global signals — scroll progress + mouse (for shader & rAF)
+     ========================================================= */
+  const state = {
+    scroll: 0,         // 0..1 over whole page
+    mouse: { x: 0.5, y: 0.5 },     // normalised, smoothed
+    mouseRaw: { x: 0.5, y: 0.5 },
+    time: 0,
+  };
+
+  window.addEventListener('pointermove', (e) => {
+    state.mouseRaw.x = e.clientX / window.innerWidth;
+    state.mouseRaw.y = 1.0 - e.clientY / window.innerHeight;
+  });
+
+  /* =========================================================
+     1. Fluid colour engine — palette stops lerped by scroll
+     ========================================================= */
+  const palettes = [
+    { a: '#0a0e27', b: '#161d44', accent: '#6c8cff' }, // hero — indigo
+    { a: '#13100c', b: '#2c1d12', accent: '#d98a5b' }, // vision — terracotta
+    { a: '#05070b', b: '#0a1722', accent: '#36e0ff' }, // craft — blueprint cyan
+    { a: '#0a1410', b: '#13261a', accent: '#c9a14a' }, // dev — gold
+    { a: '#150a16', b: '#241125', accent: '#e0863c' }, // legacy — amber
+    { a: '#0d0f14', b: '#191c24', accent: '#aeb6c2' }, // partners — steel
+    { a: '#060710', b: '#10131f', accent: '#6c8cff' }, // contact — indigo
+  ];
+  const C = palettes.map(p => ({
+    a: new THREE.Color(p.a), b: new THREE.Color(p.b), accent: new THREE.Color(p.accent),
+  }));
+  const cur = { a: new THREE.Color(), b: new THREE.Color(), accent: new THREE.Color() };
+
+  function samplePalette(t) {
+    const n = C.length - 1;
+    const x = Math.max(0, Math.min(1, t)) * n;
+    const i = Math.min(n - 1, Math.floor(x));
+    const f = x - i;
+    // smootherstep for buttery blends
+    const s = f * f * f * (f * (f * 6 - 15) + 10);
+    cur.a.copy(C[i].a).lerp(C[i + 1].a, s);
+    cur.b.copy(C[i].b).lerp(C[i + 1].b, s);
+    cur.accent.copy(C[i].accent).lerp(C[i + 1].accent, s);
+  }
+
+  /* =========================================================
+     2. Background — painterly cursor-reactive shader (Three.js)
+     ========================================================= */
+  const bgCanvas = document.getElementById('bg-canvas');
+  const bgRenderer = new THREE.WebGLRenderer({ canvas: bgCanvas, antialias: false });
+  bgRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.6));
+  bgRenderer.setSize(window.innerWidth, window.innerHeight);
+
+  const bgScene = new THREE.Scene();
+  const bgCam = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+
+  const bgUniforms = {
+    u_time: { value: 0 },
+    u_res: { value: new THREE.Vector2(window.innerWidth, window.innerHeight) },
+    u_mouse: { value: new THREE.Vector2(0.5, 0.5) },
+    u_colorA: { value: new THREE.Color(palettes[0].a) },
+    u_colorB: { value: new THREE.Color(palettes[0].b) },
+    u_accent: { value: new THREE.Color(palettes[0].accent) },
+  };
+
+  const bgMat = new THREE.ShaderMaterial({
+    uniforms: bgUniforms,
+    vertexShader: /* glsl */`
+      varying vec2 vUv;
+      void main(){ vUv = uv; gl_Position = vec4(position.xy, 0.0, 1.0); }
+    `,
+    fragmentShader: /* glsl */`
+      precision highp float;
+      varying vec2 vUv;
+      uniform float u_time;
+      uniform vec2  u_res;
+      uniform vec2  u_mouse;
+      uniform vec3  u_colorA;
+      uniform vec3  u_colorB;
+      uniform vec3  u_accent;
+
+      // --- Ashima simplex noise 3D ---
+      vec3 mod289(vec3 x){return x-floor(x*(1.0/289.0))*289.0;}
+      vec4 mod289(vec4 x){return x-floor(x*(1.0/289.0))*289.0;}
+      vec4 permute(vec4 x){return mod289(((x*34.0)+1.0)*x);}
+      vec4 taylorInvSqrt(vec4 r){return 1.79284291400159-0.85373472095314*r;}
+      float snoise(vec3 v){
+        const vec2 C=vec2(1.0/6.0,1.0/3.0); const vec4 D=vec4(0.0,0.5,1.0,2.0);
+        vec3 i=floor(v+dot(v,C.yyy)); vec3 x0=v-i+dot(i,C.xxx);
+        vec3 g=step(x0.yzx,x0.xyz); vec3 l=1.0-g;
+        vec3 i1=min(g.xyz,l.zxy); vec3 i2=max(g.xyz,l.zxy);
+        vec3 x1=x0-i1+C.xxx; vec3 x2=x0-i2+C.yyy; vec3 x3=x0-D.yyy;
+        i=mod289(i);
+        vec4 p=permute(permute(permute(
+          i.z+vec4(0.0,i1.z,i2.z,1.0))
+          +i.y+vec4(0.0,i1.y,i2.y,1.0))
+          +i.x+vec4(0.0,i1.x,i2.x,1.0));
+        float n_=0.142857142857; vec3 ns=n_*D.wyz-D.xzx;
+        vec4 j=p-49.0*floor(p*ns.z*ns.z);
+        vec4 x_=floor(j*ns.z); vec4 y_=floor(j-7.0*x_);
+        vec4 x=x_*ns.x+ns.yyyy; vec4 y=y_*ns.x+ns.yyyy;
+        vec4 h=1.0-abs(x)-abs(y);
+        vec4 b0=vec4(x.xy,y.xy); vec4 b1=vec4(x.zw,y.zw);
+        vec4 s0=floor(b0)*2.0+1.0; vec4 s1=floor(b1)*2.0+1.0;
+        vec4 sh=-step(h,vec4(0.0));
+        vec4 a0=b0.xzyw+s0.xzyw*sh.xxyy; vec4 a1=b1.xzyw+s1.xzyw*sh.zzww;
+        vec3 p0=vec3(a0.xy,h.x); vec3 p1=vec3(a0.zw,h.y);
+        vec3 p2=vec3(a1.xy,h.z); vec3 p3=vec3(a1.zw,h.w);
+        vec4 norm=taylorInvSqrt(vec4(dot(p0,p0),dot(p1,p1),dot(p2,p2),dot(p3,p3)));
+        p0*=norm.x; p1*=norm.y; p2*=norm.z; p3*=norm.w;
+        vec4 m=max(0.6-vec4(dot(x0,x0),dot(x1,x1),dot(x2,x2),dot(x3,x3)),0.0);
+        m=m*m;
+        return 42.0*dot(m*m,vec4(dot(p0,x0),dot(p1,x1),dot(p2,x2),dot(p3,x3)));
+      }
+      float fbm(vec3 p){
+        float v=0.0,a=0.5;
+        for(int i=0;i<5;i++){ v+=a*snoise(p); p*=2.0; a*=0.5; }
+        return v;
+      }
+
+      void main(){
+        vec2 uv=vUv;
+        vec2 asp=vec2(u_res.x/u_res.y,1.0);
+        vec2 p=(uv-0.5)*asp;
+        vec2 m=(u_mouse-0.5)*asp;
+        float t=u_time*0.04;
+
+        // domain-warped fbm => painterly clouds
+        vec3 q=vec3(p*1.3,t);
+        float w1=fbm(q);
+        float w2=fbm(q+vec3(4.7,2.1,0.0)+w1);
+        vec2 warp=vec2(w1,w2)*0.45;
+
+        // cursor pulls and brightens the paint
+        float md=length(p-m);
+        float mouseInf=exp(-md*md*1.6)*0.7;
+        warp+=(m-p)*mouseInf*0.6;
+
+        float n=fbm(vec3(p*1.5+warp,t*1.4));
+        n=n*0.5+0.5;
+        float paint=fbm(vec3(p*0.7+warp*1.6,t*0.8));
+
+        vec3 col=mix(u_colorA,u_colorB,smoothstep(0.08,0.92,n));
+        col=mix(col,u_accent,smoothstep(0.62,1.0,paint)*0.45+mouseInf*0.5);
+
+        // soft vignette + brush bloom near cursor
+        float vig=smoothstep(1.35,0.15,length((uv-0.5)*asp));
+        col*=0.6+0.55*vig;
+        col+=u_accent*mouseInf*0.25;
+
+        // fine grain
+        float g=fract(sin(dot(uv*u_res,vec2(12.9898,78.233)))*43758.5453);
+        col+=(g-0.5)*0.022;
+
+        gl_FragColor=vec4(col,1.0);
+      }
+    `,
+  });
+  bgScene.add(new THREE.Mesh(new THREE.PlaneGeometry(2, 2), bgMat));
+
+  /* =========================================================
+     3. Craft — procedural orbitable tower (Three.js + OrbitControls)
+     ========================================================= */
+  const towerCanvas = document.getElementById('tower-canvas');
+  const tRenderer = new THREE.WebGLRenderer({ canvas: towerCanvas, antialias: true, alpha: true });
+  tRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  tRenderer.setSize(towerCanvas.clientWidth || window.innerWidth, towerCanvas.clientHeight || window.innerHeight);
+
+  const tScene = new THREE.Scene();
+  const tCam = new THREE.PerspectiveCamera(42, 1, 0.1, 100);
+  tCam.position.set(0, 6, 22);
+
+  const controls = new OrbitControls(tCam, towerCanvas);
+  controls.enableDamping = true;
+  controls.dampingFactor = 0.08;
+  controls.enableZoom = false;      // don't hijack page scroll
+  controls.enablePan = false;
+  controls.autoRotate = true;
+  controls.autoRotateSpeed = 0.6;
+  controls.target.set(0, 5, 0);
+  controls.minPolarAngle = 0.6;
+  controls.maxPolarAngle = Math.PI * 0.62;
+
+  // --- the building group ---
+  const city = new THREE.Group();
+  tScene.add(city);
+
+  const accentColor = new THREE.Color(palettes[2].accent);
+
+  const glassMat = new THREE.MeshStandardMaterial({
+    color: 0x0b1018, metalness: 0.9, roughness: 0.18,
+    emissive: new THREE.Color(0x0a1a2a), emissiveIntensity: 0.35,
+  });
+  const edgeMat = new THREE.LineBasicMaterial({ color: accentColor, transparent: true, opacity: 0.85 });
+  const winMat = new THREE.MeshStandardMaterial({
+    color: 0x0a0f16, emissive: accentColor.clone(), emissiveIntensity: 0.0, metalness: 0.6, roughness: 0.4,
+  });
+
+  // Build a tapered tower from stacked setback blocks
+  function addBlock(w, d, h, y) {
+    const geo = new THREE.BoxGeometry(w, h, d);
+    const mesh = new THREE.Mesh(geo, glassMat);
+    mesh.position.y = y + h / 2;
+    city.add(mesh);
+    // glowing edges (blueprint aesthetic)
+    const edges = new THREE.LineSegments(new THREE.EdgesGeometry(geo), edgeMat);
+    edges.position.copy(mesh.position);
+    city.add(edges);
+    // lit window bands
+    const bands = Math.max(2, Math.floor(h / 1.1));
+    for (let i = 1; i < bands; i++) {
+      const bg = new THREE.BoxGeometry(w + 0.02, 0.06, d + 0.02);
+      const bm = new THREE.Mesh(bg, winMat.clone());
+      bm.position.set(0, y + (h / bands) * i, 0);
+      bm.userData.lit = Math.random();
+      city.add(bm);
+    }
+    return mesh;
+  }
+
+  // main tower — tapered setbacks
+  let y = 0;
+  const segs = [
+    { w: 6.4, d: 6.4, h: 3.2 },
+    { w: 5.6, d: 5.6, h: 3.6 },
+    { w: 4.9, d: 4.9, h: 3.6 },
+    { w: 4.2, d: 4.2, h: 3.4 },
+    { w: 3.5, d: 3.5, h: 3.2 },
+    { w: 2.8, d: 2.8, h: 2.6 },
+  ];
+  segs.forEach(s => { addBlock(s.w, s.d, s.h, y); y += s.h; });
+  // crown spire
+  const spire = new THREE.Mesh(new THREE.ConeGeometry(0.35, 2.2, 6), edgeMat.clone());
+  spire.material = new THREE.MeshStandardMaterial({ color: accentColor, emissive: accentColor, emissiveIntensity: 1.2, metalness: 1, roughness: 0.2 });
+  spire.position.y = y + 1.1;
+  city.add(spire);
+
+  // two context towers
+  function contextTower(x, z, scale, h) {
+    const g = new THREE.Group();
+    let yy = 0;
+    const n = 4;
+    for (let i = 0; i < n; i++) {
+      const w = (3.4 - i * 0.5) * scale;
+      const seg = h / n;
+      const geo = new THREE.BoxGeometry(w, seg, w);
+      const mesh = new THREE.Mesh(geo, glassMat);
+      mesh.position.y = yy + seg / 2;
+      g.add(mesh);
+      const e = new THREE.LineSegments(new THREE.EdgesGeometry(geo), new THREE.LineBasicMaterial({ color: accentColor, transparent: true, opacity: 0.3 }));
+      e.position.copy(mesh.position); g.add(e);
+      yy += seg;
+    }
+    g.position.set(x, 0, z);
+    city.add(g);
+  }
+  contextTower(-9, -4, 0.8, 12);
+  contextTower(9.5, -6, 0.7, 9.5);
+  contextTower(7, 6, 0.6, 7);
+
+  // ground grid (subtle blueprint plane)
+  const grid = new THREE.GridHelper(60, 60, accentColor, accentColor);
+  grid.material.transparent = true;
+  grid.material.opacity = 0.08;
+  grid.position.y = 0;
+  city.add(grid);
+
+  // reflective dark floor
+  const floor = new THREE.Mesh(
+    new THREE.CircleGeometry(34, 64),
+    new THREE.MeshStandardMaterial({ color: 0x05070c, metalness: 0.7, roughness: 0.5 })
+  );
+  floor.rotation.x = -Math.PI / 2;
+  floor.position.y = -0.02;
+  city.add(floor);
+
+  // lights
+  tScene.add(new THREE.HemisphereLight(0x9fb4ff, 0x050608, 0.8));
+  const key = new THREE.DirectionalLight(0xffffff, 1.4);
+  key.position.set(8, 16, 10);
+  tScene.add(key);
+  const rim = new THREE.PointLight(accentColor, 2.2, 60);
+  rim.position.set(-10, 10, -8);
+  tScene.add(rim);
+  const fill = new THREE.PointLight(0x6c8cff, 1.2, 50);
+  fill.position.set(10, 4, 12);
+  tScene.add(fill);
+
+  // center the city group's pivot
+  city.position.y = -5;
+
+  let towerVisible = false;
+  let scrollRotY = 0;       // driven by ScrollTrigger
+  const roElev = document.getElementById('roElev');
+
+  function resizeTower() {
+    const w = towerCanvas.clientWidth, h = towerCanvas.clientHeight;
+    if (!w || !h) return;
+    tRenderer.setSize(w, h, false);
+    tCam.aspect = w / h;
+    tCam.updateProjectionMatrix();
+  }
+
+  // only render the tower while its section is on screen
+  const craftSection = document.getElementById('craft');
+  new IntersectionObserver((entries) => {
+    towerVisible = entries[0].isIntersecting;
+    if (towerVisible) resizeTower();
+  }, { threshold: 0 }).observe(craftSection);
+
+  /* =========================================================
+     4. Lenis smooth scroll  (syncs GSAP + global progress)
+     ========================================================= */
+  let lenis;
+  if (!reduceMotion && window.Lenis) {
+    lenis = new window.Lenis({ lerp: 0.1, wheelMultiplier: 1, smoothWheel: true });
+    lenis.on('scroll', (e) => {
+      ScrollTrigger.update();
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      state.scroll = max > 0 ? e.scroll / max : 0;
+    });
+    gsap.ticker.add((t) => lenis.raf(t * 1000));
+    gsap.ticker.lagSmoothing(0);
+  } else {
+    // fallback: native scroll feeds the colour engine
+    window.addEventListener('scroll', () => {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      state.scroll = max > 0 ? window.scrollY / max : 0;
+    }, { passive: true });
+  }
+
+  /* =========================================================
+     5. GSAP ScrollTrigger — cinematic scene reveals
+     ========================================================= */
+  // hero line-mask intro (after loader)
+  function heroIntro() {
+    const tl = gsap.timeline({ defaults: { ease: 'expo.out' } });
+    tl.from('.hero__title .line-in', { yPercent: 110, duration: 1.2, stagger: 0.12 })
+      .from('.hero__eyebrow', { y: 20, opacity: 0, duration: 0.8 }, '-=0.8')
+      .from('.hero__lead, .hero__meta', { y: 24, opacity: 0, duration: 0.9, stagger: 0.1 }, '-=0.7')
+      .from('.chip', { scale: 0.6, opacity: 0, duration: 0.9, stagger: 0.08, ease: 'back.out(1.7)' }, '-=0.7')
+      .from('.scrollcue', { opacity: 0, duration: 0.8 }, '-=0.4');
+  }
+
+  // generic fade-ups
+  gsap.utils.toArray('[data-fade]').forEach((el) => {
+    if (el.closest('.hero')) return; // hero handled by intro
+    gsap.from(el, {
+      scrollTrigger: { trigger: el, start: 'top 85%' },
+      y: 40, opacity: 0, duration: 1, ease: 'expo.out',
+    });
+  });
+
+  // staggered groups (cells, projects, stats, logos)
+  document.querySelectorAll('.vision__grid, .projects, .stats, .logos').forEach((group) => {
+    const items = group.querySelectorAll('[data-stagger]');
+    gsap.from(items, {
+      scrollTrigger: { trigger: group, start: 'top 80%' },
+      y: 60, opacity: 0, duration: 1, ease: 'expo.out', stagger: 0.1,
+    });
+  });
+
+  // line-mask reveal for any masked headings outside hero
+  gsap.utils.toArray('.vision__statement, .display').forEach((el) => {
+    gsap.from(el, {
+      scrollTrigger: { trigger: el, start: 'top 82%' },
+      opacity: 0, y: 30, duration: 1.1, ease: 'expo.out',
+    });
+  });
+
+  // CRAFT: scroll rotates the tower + scrub the readout
+  ScrollTrigger.create({
+    trigger: '.craft',
+    start: 'top top',
+    end: 'bottom bottom',
+    onUpdate: (self) => {
+      scrollRotY = self.progress * Math.PI * 2.2;  // full reveal + a bit
+      if (roElev) roElev.textContent = String(Math.round((scrollRotY * 180 / Math.PI) % 360)).padStart(3, '0');
+    },
+  });
+
+  // animated counters
+  document.querySelectorAll('.num[data-count]').forEach((el) => {
+    const target = +el.getAttribute('data-count');
+    const obj = { v: 0 };
+    ScrollTrigger.create({
+      trigger: el, start: 'top 85%', once: true,
+      onEnter: () => gsap.to(obj, {
+        v: target, duration: 2, ease: 'power2.out',
+        onUpdate: () => {
+          const val = Math.floor(obj.v);
+          el.textContent = val >= 1000 ? val.toLocaleString('en-IN') : String(val);
+        },
+      }),
+    });
+  });
+
+  // parallax drift on project cards
+  if (!reduceMotion) {
+    gsap.utils.toArray('.project').forEach((card) => {
+      gsap.to(card, {
+        yPercent: -6,
+        ease: 'none',
+        scrollTrigger: { trigger: card, start: 'top bottom', end: 'bottom top', scrub: true },
+      });
+    });
+  }
+
+  // nav: hide on scroll-down, show on scroll-up + scrolled bg + active link
+  const nav = document.getElementById('nav');
+  let lastY = 0;
+  ScrollTrigger.create({
+    start: 'top -80',
+    onUpdate: (self) => {
+      const y = self.scroll();
+      nav.classList.toggle('scrolled', y > 60);
+      if (y > lastY && y > 300) nav.classList.add('hidden');
+      else nav.classList.remove('hidden');
+      lastY = y;
+    },
+  });
+  // active section in nav
+  document.querySelectorAll('main section[id]').forEach((sec) => {
+    ScrollTrigger.create({
+      trigger: sec, start: 'top 50%', end: 'bottom 50%',
+      onToggle: (self) => {
+        if (self.isActive) {
+          document.querySelectorAll('.nav__links a').forEach(a =>
+            a.classList.toggle('active', a.getAttribute('href') === '#' + sec.id));
+        }
+      },
+    });
+  });
+
+  // anchor links via Lenis
+  document.querySelectorAll('a[href^="#"]').forEach((a) => {
+    a.addEventListener('click', (e) => {
+      const id = a.getAttribute('href');
+      if (id.length < 2) return;
+      const t = document.querySelector(id);
+      if (!t) return;
+      e.preventDefault();
+      if (lenis) lenis.scrollTo(t, { offset: 0, duration: 1.4 });
+      else t.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+
+  /* =========================================================
+     6. Custom cursor (lerped) + hover states
+     ========================================================= */
+  const cursor = document.getElementById('cursor');
+  const cursorDot = document.getElementById('cursorDot');
+  const cpos = { x: innerWidth / 2, y: innerHeight / 2 };
+  const ctarget = { x: cpos.x, y: cpos.y };
+  if (!isTouch) {
+    window.addEventListener('pointermove', (e) => { ctarget.x = e.clientX; ctarget.y = e.clientY; });
+    document.querySelectorAll('[data-hover]').forEach((el) => {
+      el.addEventListener('pointerenter', () => cursor.classList.add('is-hover'));
+      el.addEventListener('pointerleave', () => cursor.classList.remove('is-hover'));
+    });
+    towerCanvas.addEventListener('pointerenter', () => cursor.classList.add('is-drag'));
+    towerCanvas.addEventListener('pointerleave', () => cursor.classList.remove('is-drag'));
+  }
+
+  /* =========================================================
+     7. requestAnimationFrame master loop
+        - floats hero chips alive
+        - smooths mouse + cursor
+        - drives colour engine + both renderers
+     ========================================================= */
+  const chips = gsap.utils.toArray('.chip');
+  const chipSeed = chips.map(() => Math.random() * Math.PI * 2);
+
+  let raf = 0;
+  const clock = new THREE.Clock();
+
+  function loop() {
+    raf = requestAnimationFrame(loop);
+    const dt = clock.getDelta();
+    state.time += dt;
+
+    // smooth mouse
+    state.mouse.x += (state.mouseRaw.x - state.mouse.x) * 0.06;
+    state.mouse.y += (state.mouseRaw.y - state.mouse.y) * 0.06;
+
+    // ---- colour engine ----
+    samplePalette(state.scroll);
+    bgUniforms.u_colorA.value.copy(cur.a);
+    bgUniforms.u_colorB.value.copy(cur.b);
+    bgUniforms.u_accent.value.copy(cur.accent);
+    // push live accent to CSS so UI shifts with the chapter
+    const ac = cur.accent;
+    document.documentElement.style.setProperty('--accent',
+      `rgb(${(ac.r*255)|0},${(ac.g*255)|0},${(ac.b*255)|0})`);
+
+    // ---- background shader ----
+    bgUniforms.u_time.value = state.time;
+    bgUniforms.u_mouse.value.set(state.mouse.x, state.mouse.y);
+    bgRenderer.render(bgScene, bgCam);
+
+    // ---- floating hero chips (rAF + sine + mouse parallax) ----
+    if (!reduceMotion) {
+      const px = (state.mouse.x - 0.5);
+      const py = (state.mouse.y - 0.5);
+      chips.forEach((chip, i) => {
+        const s = chipSeed[i];
+        const fx = Math.sin(state.time * 0.6 + s) * 14 + px * (24 + i * 6);
+        const fy = Math.cos(state.time * 0.5 + s * 1.3) * 16 - py * (24 + i * 6);
+        chip.style.transform = `translate3d(${fx}px, ${fy}px, 0)`;
+      });
+    }
+
+    // ---- tower ----
+    if (towerVisible) {
+      controls.update();
+      // ease the scroll-driven rotation onto the group
+      city.rotation.y += (scrollRotY - city.rotation.y) * 0.08;
+      city.position.y = -5 + Math.sin(state.time * 0.6) * 0.18; // gentle float
+      // flicker a few windows
+      city.children.forEach((c) => {
+        if (c.material && c.material.emissive && c.userData.lit !== undefined) {
+          c.material.emissiveIntensity = 0.15 + Math.abs(Math.sin(state.time * 0.8 + c.userData.lit * 10)) * 0.5;
+          c.material.emissive.copy(cur.accent);
+        }
+      });
+      spire.material.emissive.copy(cur.accent);
+      rim.color.copy(cur.accent);
+      tRenderer.render(tScene, tCam);
+    }
+
+    // ---- cursor ----
+    if (!isTouch) {
+      cpos.x += (ctarget.x - cpos.x) * 0.18;
+      cpos.y += (ctarget.y - cpos.y) * 0.18;
+      cursor.style.transform = `translate(${cpos.x}px, ${cpos.y}px) translate(-50%,-50%)`;
+      cursorDot.style.transform = `translate(${ctarget.x}px, ${ctarget.y}px) translate(-50%,-50%)`;
+    }
+  }
+
+  /* =========================================================
+     8. Resize
+     ========================================================= */
+  window.addEventListener('resize', () => {
+    bgRenderer.setSize(window.innerWidth, window.innerHeight);
+    bgUniforms.u_res.value.set(window.innerWidth, window.innerHeight);
+    resizeTower();
+    ScrollTrigger.refresh();
+  });
+
+  /* =========================================================
+     9. Loader → boot
+     ========================================================= */
+  const loader = document.getElementById('loader');
+  const loaderBar = document.getElementById('loaderBar');
+  const loaderPct = document.getElementById('loaderPct');
+
+  function boot() {
+    resizeTower();
+    loop();
+    let p = 0;
+    const tick = setInterval(() => {
+      p += Math.random() * 18 + 6;
+      if (p >= 100) { p = 100; clearInterval(tick); finish(); }
+      loaderBar.style.width = p + '%';
+      loaderPct.textContent = 'LOADING — ' + String(Math.floor(p)).padStart(2, '0') + '%';
+    }, 130);
+  }
+
+  function finish() {
+    setTimeout(() => {
+      loader.classList.add('done');
+      document.body.style.overflow = '';
+      if (!reduceMotion) heroIntro(); else gsap.set('.hero__title .line-in', { yPercent: 0 });
+      ScrollTrigger.refresh();
+    }, 350);
+  }
+
+  // start once fonts are ready (so line-masks measure correctly)
+  document.body.style.overflow = 'hidden';
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(boot);
+    setTimeout(() => { if (!raf) boot(); }, 1500); // safety
+  } else {
+    boot();
+  }
+  </script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "interior",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "8801", "--directory", "/Users/we45/webdesigns/interior-designer"],
+      "port": 8801
+    },
+    {
+      "name": "realestate",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "8802", "--directory", "/Users/we45/webdesigns/real-estate"],
+      "port": 8802
+    },
+    {
+      "name": "luxe-interior",
+      "runtimeExecutable": "sh",
+      "runtimeArgs": ["-c", "cd /Users/we45/webdesigns/luxe-interior && npm run dev -- --port 5191 --strictPort"],
+      "port": 5191
+    }
+  ]
+}
